@@ -10,16 +10,16 @@ inputs:
 runs:
   using: "composite"
   steps:
-    #- name: Install dependencies
-    #  shell: bash
-    #  run: |
-    #    python -m pip install --upgrade pip
-    #    pip install flake8 pytest
-    #    cd ${{ github.action_path }}
-    #    if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-    - name: Setup Node.js environment
-      uses: actions/setup-node@v3.5.1
-    - name: Clone Database
+    - name: Install dependencies
+      shell: bash
+      run: |
+        python -m pip install --upgrade pip
+        pip install flake8 pytest
+        cd ${{ github.action_path }}
+        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+    #- name: Setup Node.js environment
+    #  uses: actions/setup-node@v3.5.1
+    #- name: Clone Database
       run: ${{ github.action_path }}/clone.sh ${{ inputs.source }} ${{ inputs.target }}
       shell: bash
     - name: Anonymize Database

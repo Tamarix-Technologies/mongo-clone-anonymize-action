@@ -5,5 +5,5 @@ MONGO_URI_TARGET=$2
 DB_NAME_SOURCE="${MONGO_URI_SOURCE##*/}"
 DB_NAME_TARGET="${MONGO_URI_TARGET##*/}"
 
-#python anonymize.py ${MONGO_URI_TARGET}
-node anonymize.js ${MONGO_URI_TARGET}
+python anonymize.py ${MONGO_URI_TARGET}
+#node anonymize.js ${MONGO_URI_TARGET}
