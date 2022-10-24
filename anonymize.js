@@ -2,10 +2,11 @@ const mongoose = require('mongoose')
 
 console.log(process.argv[2]);
 try{
-    db = mongoose.connect(process.argv[2]);
+    mongoose.connect(process.argv[2]);
     console.log('Connected to DB')
     }catch(err){console.log(err)}
 
+const { db } = mongoose.connection;
 
 var simpleMasksPt1Stage = {
     // FULL FIELD OBFUSCATION USING AN MD5 HASH OF ITS VALUE (note, not 'cryptographically safe')
