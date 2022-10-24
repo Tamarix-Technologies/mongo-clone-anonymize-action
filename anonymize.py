@@ -1,4 +1,10 @@
 import sys
-import pymongo
+from pymongo import MongoClient
 
-print(sys.argv[1])
+db_url = sys.argv[1]
+db = MongoClient(db_url)
+try:
+    print("Connected to MongoDB Atlas")
+    print(db.server_info())
+except Exception:
+    print("Unable to connect MongoDB Atlas.")
