@@ -2,11 +2,10 @@ const mongoose = require('mongoose')
 
 console.log(process.argv[2]);
 try{
-    mongoose.connect(process.argv[2]);
-    console.log('Connected to DB')
+    mongoose.connect(process.argv[2], () => console.log('Connected to DB') );
     }catch(err){console.log(err)}
 
-const { db } = mongoose.connection;
+const db = mongoose.connection.getClient()
 
 var simpleMasksPt1Stage = {
     // FULL FIELD OBFUSCATION USING AN MD5 HASH OF ITS VALUE (note, not 'cryptographically safe')
@@ -25,6 +24,6 @@ replace_pipeline = [].concat(pipeline);  // COPY THE ORIGINAL PIPELINE
 replace_pipeline.push(
     {'$merge': {'into': { 'db': 'appdb', 'coll': 'users'}, 'on': '_id',  'whenMatched': 'replace', 'whenNotMatched': 'fail'}}
 );
-console.log(db.users.find())
-db.users.aggregate(replace_pipeline);
-db.users.find();
+
+const User = mongoose.Model('users')
+console.log(User.find({}))
