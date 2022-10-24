@@ -1,0 +1,22 @@
+{
+  "name": "mongo-clone-action",
+  "version": "1.0.0",
+  "description": "A simple github action to trigger mongoDB database clones via mongodump & mongorestore   It will **overwrite** any existing target database with the source database.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Tamarix-Technologies/mongo-clone-action.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Tamarix-Technologies/mongo-clone-action/issues"
+  },
+  "homepage": "https://github.com/Tamarix-Technologies/mongo-clone-action#readme",
+  "dependencies": {
+    "mongoose": "^6.6.7"
+  }
+}
