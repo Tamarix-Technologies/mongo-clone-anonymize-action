@@ -23,6 +23,7 @@ runs:
       run: |
         cd ${{ github.action_path }}
         npm install package-lock.json
+      shell: bash
     #- name: Clone Database
     #  run: ${{ github.action_path }}/clone.sh ${{ inputs.source }} ${{ inputs.target }}
     #  shell: bash
