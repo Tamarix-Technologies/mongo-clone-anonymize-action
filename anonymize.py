@@ -2,6 +2,7 @@ import random
 import sys
 from utilities import get_db,get_password_hash
 import hashlib
+import string
 
 
 db_url = sys.argv[1]
@@ -23,7 +24,7 @@ for user in users:
 # anonymize portfolios
 portfolios = db['portfolios'].find({})
 port_map = {}
-letters = str.ascii_lowercase
+letters = string.ascii_lowercase
 for portfolio in portfolios:
     portfolio['username'] = user_map[portfolio['username']]
     port_name = portfolio['port_name']
