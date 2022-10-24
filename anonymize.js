@@ -24,5 +24,5 @@ replace_pipeline = [].concat(pipeline);  // COPY THE ORIGINAL PIPELINE
 replace_pipeline.push(
     {'$merge': {'into': { 'db': 'appdb', 'coll': 'users'}, 'on': '_id',  'whenMatched': 'replace', 'whenNotMatched': 'fail'}}
 );
-db.payments.aggregate(replace_pipeline);
-db.payments.find();
+db.users.aggregate(replace_pipeline);
+db.users.find();
