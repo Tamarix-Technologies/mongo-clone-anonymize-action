@@ -6,4 +6,5 @@ DB_NAME_SOURCE="${MONGO_URI_SOURCE##*/}"
 DB_NAME_TARGET="${MONGO_URI_TARGET##*/}"
 
 ls .
+echo "Davide"
 #python ./anonymize.py MONGO_URI_TARGET
