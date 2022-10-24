@@ -14,7 +14,9 @@ runs:
     #  run: ${{ github.action_path }}/clone.sh ${{ inputs.source }} ${{ inputs.target }}
     #  shell: bash
     - name: Anonymize Database
-      run: ${{ github.action_path }}/anonymize.sh ${{ inputs.source }} ${{ inputs.target }}
+      run: |
+        cd ${{ github.action_path }}
+        ./anonymize.sh ${{ inputs.source }} ${{ inputs.target }}
       shell: bash
 branding:
   icon: 'server'
