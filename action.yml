@@ -17,10 +17,8 @@ runs:
     #    pip install flake8 pytest
     #    cd ${{ github.action_path }}
     #    if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-    - uses: actions/checkout@v3
-    - uses: actions/setup-node@v3
-    - run: npm ci
-    - run: npm test
+    - name: Setup Node.js environment
+      uses: actions/setup-node@v3.5.1
     #- name: Clone Database
     #  run: ${{ github.action_path }}/clone.sh ${{ inputs.source }} ${{ inputs.target }}
     #  shell: bash
