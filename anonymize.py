@@ -40,6 +40,7 @@ for portfolio in portfolios:
 # anonymize figures
 figures = db['portfolios'].find({})
 for figure in figures:
+    print(figure['username'])
     figure['username'] = user_map[figure['username']]
     figure['port_name'] = port_map[figure['port_name']]
     for subfigure in figure['figures']:
