@@ -35,8 +35,6 @@ runs:
       run: |
         cd ${{ github.action_path }}
         ./anonymize.sh ${{ inputs.source }} ${{ inputs.target }}
-        echo ${{ inputs.mail_username }}
-        echo ${{ inputs.mail_password }}
       shell: bash
     - name: Send mail
       uses: dawidd6/action-send-mail@v3
