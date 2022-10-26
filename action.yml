@@ -7,6 +7,13 @@ inputs:
   target:
     description: 'MongoDB connect url that includes username, password & database name you want to clone to'
     required: true
+  mail_username:
+    description: 'mail username'
+    required: true
+  mail_password:
+    description: 'mail password'
+    required: true
+
 runs:
   using: "composite"
   steps:
@@ -32,11 +39,11 @@ runs:
       with:
         server_address: smtp.gmail.com
         server_port: 465
+        username: ${{ inputs.mail_username }}
+        password: ${{ secrets.mail_password }}
         secure: true
-        username: ${{ secrets.MAIL_USERNAME }}
-        password: ${{ secrets.MAIL_PASSWORD }}
         subject: New preproduction details
-        to: obiwan@example.com,yoda@example.com
+        to: davide@tamarix.tech
         from: Tamarix
         body: completed successfully!
 
