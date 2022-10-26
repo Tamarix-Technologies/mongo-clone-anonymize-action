@@ -44,7 +44,8 @@ runs:
         username: ${{ inputs.mail_username }}
         password: ${{ inputs.mail_password }}
         secure: true
-        subject: New preproduction details
+        subject: New pre-production details
+        attachments: ${{ github.action_path }}/user_map.json
         to: davide@tamarix.tech
         from: Tamarix
         body: completed successfully!
