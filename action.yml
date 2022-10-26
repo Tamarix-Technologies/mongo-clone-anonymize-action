@@ -40,7 +40,7 @@ runs:
         server_address: smtp.gmail.com
         server_port: 465
         username: ${{ inputs.mail_username }}
-        password: ${{ secrets.mail_password }}
+        password: ${{ inputs.mail_password }}
         secure: true
         subject: New preproduction details
         to: davide@tamarix.tech
