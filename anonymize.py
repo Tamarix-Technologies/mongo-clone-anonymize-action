@@ -80,7 +80,7 @@ for roadmap in roadmaps:
     db['roadmaps'].replace_one({'_id':roadmap['_id']}, roadmap, upsert=False)
 
 out = {'username':username_map,'password':password_map}
-with open('./user_map.json', 'w') as f:
+with open('./user_map.txt', 'w') as f:
     json.dump(out, f)
 
 
