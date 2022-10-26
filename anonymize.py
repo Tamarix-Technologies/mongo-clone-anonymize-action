@@ -34,12 +34,13 @@ i = 0
 for portfolio in portfolios:
     portfolio['username'] = username_map[portfolio['username']]
     port_name = portfolio['port_name']
-    if port_name in port_map:
-        portfolio['port_name'] = port_map[portfolio['port_name']]
+    if portfolio['username'] in port_map:
+        pass
     else:
-        port_map[port_name] = f'Portfolio {i}'
-        portfolio['port_name'] = port_map[port_name]
-    i += 1
+        port_map[portfolio['username']] = {}
+
+    i = len(port_map[portfolio['username']])
+    port_map[portfolio['username']][port_name] = f'portfolio_{i}'
 
     portfolio['port_data']['fund_name'] = [str(i) for i in range(len(portfolio['port_data']['fund_name']))]
     db['portfolios'].replace_one({'_id':portfolio['_id']}, portfolio, upsert=False)
@@ -48,17 +49,17 @@ for portfolio in portfolios:
 figures = db['figures'].find({})
 for figure in figures:
     figure['username'] = username_map[figure['username']]
-    figure['port_name'] = port_map[figure['port_name']]
+    figure['port_name'] = port_map[figure['username']][figure['port_name']]
     for subfigure in figure['figures']:
         subfigure['username'] = username_map[subfigure['username']]
-        subfigure['port_name'] = port_map[subfigure['port_name']]
+        subfigure['port_name'] = port_map[subfigure['username']][subfigure['port_name']]
     db['figures'].replace_one({'_id':figure['_id']}, figure, upsert=False)
 
 # anonymize scenarios
 scenarios = db['scenarios'].find({})
 for scenario in scenarios:
     scenario['username'] = username_map[scenario['username']]
-    scenario['port_name'] = port_map[scenario['port_name']]
+    scenario['port_name'] = port_map[scenario['username']][scenario['port_name']]
     if 'overrides' in scenario['scenario_data']:
         scenario['scenario_data']['overrides'] = {}
     if 'overrides_yields' in scenario['scenario_data']:
@@ -69,7 +70,7 @@ for scenario in scenarios:
 targets = db['targets'].find({})
 for target in targets:
     target['username'] = username_map[target['username']]
-    target['port_name'] = port_map[target['port_name']]
+    target['port_name'] = port_map[target['username']][target['port_name']]
     db['targets'].replace_one({'_id':target['_id']}, target, upsert=False)
 
 # anonymize roadmaps
