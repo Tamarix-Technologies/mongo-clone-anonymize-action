@@ -40,7 +40,9 @@ for portfolio in portfolios:
         port_map[portfolio['username']] = {}
 
     i = len(port_map[portfolio['username']])
+
     port_map[portfolio['username']][port_name] = f'portfolio_{i}'
+    portfolio['port_name'] = port_map[portfolio['username']][port_name]
 
     portfolio['port_data']['fund_name'] = [str(i) for i in range(len(portfolio['port_data']['fund_name']))]
     db['portfolios'].replace_one({'_id':portfolio['_id']}, portfolio, upsert=False)
