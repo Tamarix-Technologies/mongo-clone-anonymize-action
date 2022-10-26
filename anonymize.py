@@ -3,6 +3,7 @@ import sys
 from utilities import get_db,get_password_hash
 import hashlib
 import string
+import json
 
 
 db_url = sys.argv[1]
@@ -71,4 +72,9 @@ for roadmap in roadmaps:
     roadmap['username'] = user_map[roadmap['username']]
     roadmap['port_name'] = port_map[roadmap['port_name']]
     db['roadmaps'].replace_one({'_id':roadmap['_id']}, roadmap, upsert=False)
+
+with open('./user_map.json', 'w') as f:
+    json.dump(user_map, f)
+
+
 
