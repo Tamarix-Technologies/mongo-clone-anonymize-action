@@ -77,7 +77,7 @@ for target in targets:
 roadmaps = db['roadmaps'].find({})
 for roadmap in roadmaps:
     roadmap['username'] = username_map[roadmap['username']]
-    roadmap['port_name'] = port_map[roadmap['port_name']]
+    roadmap['port_name'] = port_map[roadmap['username']][roadmap['port_name']]
     db['roadmaps'].replace_one({'_id':roadmap['_id']}, roadmap, upsert=False)
 
 out = {'username':username_map,'password':password_map}
