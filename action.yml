@@ -45,7 +45,7 @@ runs:
         password: ${{ inputs.mail_password }}
         secure: true
         subject: New pre-production details issued
-        attachments: ${{ github.action_path }}/user_map.json
+        attachments: ${{ github.action_path }}/user_map.txt
         to: davide@tamarix.tech
         from: Tamarix
         body: Please find the latest pre-production logins.
