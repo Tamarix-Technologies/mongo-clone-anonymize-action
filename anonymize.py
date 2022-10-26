@@ -38,9 +38,8 @@ for portfolio in portfolios:
     db['portfolios'].replace_one({'_id':portfolio['_id']}, portfolio, upsert=False)
 
 # anonymize figures
-figures = db['portfolios'].find({})
+figures = db['figures'].find({})
 for figure in figures:
-    print(figure['username'])
     figure['username'] = user_map[figure['username']]
     figure['port_name'] = port_map[figure['port_name']]
     for subfigure in figure['figures']:
