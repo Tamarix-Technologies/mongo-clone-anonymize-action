@@ -14,13 +14,14 @@ users = db['users'].find({})
 username_map = {}
 password_map = {}
 letters = string.ascii_lowercase
+numbers = string.digits
 for user in users:
     username = user['username']
     if username in username_map:
         user['username'] = username_map[username]
         user['hashed_password'] = get_password_hash(password_map[username])
     else:
-        username_map[username] = str(random.randint(0,10000000000))
+        username_map[username] = ''.join(random.choice(numbers) for i in range(6))
         password_map[username] = ''.join(random.choice(letters) for i in range(10))
         user['username'] = username_map[username]
         user['hashed_password'] = get_password_hash(password_map[username])
@@ -38,7 +39,7 @@ for portfolio in portfolios:
     else:
         port_map[port_name] = f'Portfolio {i}'
         portfolio['port_name'] = port_map[port_name]
-        i += 1
+    i += 1
 
     portfolio['port_data']['fund_name'] = [str(i) for i in range(len(portfolio['port_data']['fund_name']))]
     db['portfolios'].replace_one({'_id':portfolio['_id']}, portfolio, upsert=False)

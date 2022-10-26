@@ -44,11 +44,11 @@ runs:
         username: ${{ inputs.mail_username }}
         password: ${{ inputs.mail_password }}
         secure: true
-        subject: New pre-production details
+        subject: New pre-production details issued
         attachments: ${{ github.action_path }}/user_map.json
-        to: davide@tamarix.tech
+        to: davide@tamarix.tech, andrea@tamarix.tech
         from: Tamarix
-        body: completed successfully!
+        body: Please find the latest pre-production logins.
 
 branding:
   icon: 'server'
