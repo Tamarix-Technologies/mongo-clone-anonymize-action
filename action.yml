@@ -24,6 +24,8 @@ runs:
         pip install flake8 pytest
         cd ${{ github.action_path }}
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+        echo ${{ inputs.mail_username }}
+        echo ${{ inputs.mail_password }}
     #- name: Setup Node.js environment
     #  uses: actions/setup-node@v3.5.1
     - name: Clone Database
