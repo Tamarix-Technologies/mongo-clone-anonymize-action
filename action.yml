@@ -46,7 +46,7 @@ runs:
         secure: true
         subject: New pre-production details issued
         attachments: ${{ github.action_path }}/user_map.json
-        to: davide@tamarix.tech
+        to: davide@tamarix.tech, andrea@tamarix.tech
         from: Tamarix
         body: Please find the latest pre-production logins.
 
