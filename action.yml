@@ -1,4 +1,4 @@
-name: 'mongo-clone-action'
+name: 'mongo-clone-anonymize-action'
 description: 'Github action to trigger mongoDB database clones via mongodump & mongorestore'
 inputs:
   source:
