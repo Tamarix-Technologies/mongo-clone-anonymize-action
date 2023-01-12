@@ -41,6 +41,9 @@ runs:
     - name: Clone Database
       run: ${{ github.action_path }}/clone.sh ${{ inputs.source }} ${{ inputs.target }}
       shell: bash
+    - name: Add write author
+      run: chmod +x ${{ github.action_path }}./anonymize.sh
+      shell: bash
     - name: Anonymize Database
       run: |
         cd ${{ github.action_path }}
