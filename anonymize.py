@@ -8,7 +8,7 @@ import json
 
 db_url = sys.argv[1]
 db = get_db(db_url)
-
+raise Exception
 # anonymize users data
 users = db['users'].find({})
 username_map = {}
@@ -17,6 +17,7 @@ letters = string.ascii_lowercase
 numbers = string.digits
 for user in users:
     username = user['username']
+    print(username)
     if username in username_map:
         user['username'] = username_map[username]
         user['hashed_password'] = get_password_hash(password_map[username])
@@ -31,7 +32,9 @@ for user in users:
 portfolios = db['portfolios'].find({})
 port_map = {}
 i = 0
+print(username_map)
 for portfolio in portfolios:
+    print(portfolio)
     portfolio['username'] = username_map[portfolio['username']]
     port_name = portfolio['port_name']
     if portfolio['username'] in port_map:
