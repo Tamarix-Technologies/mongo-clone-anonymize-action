@@ -30,7 +30,7 @@ runs:
       run: lsb_release -a
       shell: bash
     - name: Install Mongo Tools
-      run: sudo apt install ./mongodb-database-tools-ubuntu1604-arm64-100.6.0.deb
+      run: sudo apt install ./mongodb-database-tools-ubuntu2204-x86_64-100.6.0.deb
       shell: bash
     - name: See mongodump version
       run: mongodump --version
