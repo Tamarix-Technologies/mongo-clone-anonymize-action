@@ -26,12 +26,6 @@ runs:
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
     #- name: Setup Node.js environment
     #  uses: actions/setup-node@v3.5.1
-    - name: Show Ubuntu
-      run: lsb_release -a
-      shell: bash
-    - name: Install Mongo Tools
-      run: sudo apt install ./mongodb-database-tools-ubuntu2204-x86_64-100.6.0.deb
-      shell: bash
     - name: See mongodump version
       run: mongodump --version
       shell: bash
