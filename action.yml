@@ -26,7 +26,16 @@ runs:
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
     #- name: Setup Node.js environment
     #  uses: actions/setup-node@v3.5.1
-    - name: Install MongoDB
+    - name: Install MongoDB step 1
+      run: wget -qO - https://www.mongodb.org/static/pgp/server-6.0.asc | sudo apt-key add -
+      shell: bash
+    - name: Install MongoDB step 2
+      run: echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu focal/mongodb-org/6.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-6.0.list
+      shell: bash
+    - name: Install MongoDB step 3
+      run: sudo apt-get update
+      shell: bash
+    - name: Install MongoDB step 4
       run: sudo apt-get install -y mongodb-org
       shell: bash
     - name: Clone Database
