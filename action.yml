@@ -43,8 +43,8 @@ runs:
       shell: bash
     - name: Anonymize Database
       run: |
-        sudo cd ${{ github.action_path }}
-        ./anonymize.py ${{ inputs.source }} ${{ inputs.target }}
+        cd ${{ github.action_path }}
+        ./anonymize.sh ${{ inputs.source }} ${{ inputs.target }}
       shell: bash
     - name: Send mail
       uses: dawidd6/action-send-mail@v3
