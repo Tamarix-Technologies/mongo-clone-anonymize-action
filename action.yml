@@ -26,8 +26,8 @@ runs:
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
     #- name: Setup Node.js environment
     #  uses: actions/setup-node@v3.5.1
-    - name: See mongodump version
-      run: mongodump --version
+    - name: Install MongoDB
+      run: sudo apt-get install -y mongodb-org
       shell: bash
     - name: Clone Database
       run: ${{ github.action_path }}/clone.sh ${{ inputs.source }} ${{ inputs.target }}
